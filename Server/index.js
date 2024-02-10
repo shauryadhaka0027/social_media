@@ -4,9 +4,11 @@ const connection = require("./db");
 require("dotenv").config();
 const PORT = process.env.PORT;
 
-
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.send({"msg": "shaurya"});
+});
 
 app.listen(PORT, async () => {
     try {
@@ -15,6 +17,5 @@ app.listen(PORT, async () => {
         console.log("server is connected");
     } catch (error) {
         console.error("Error connecting to database:", error);
-        
     }
 });
