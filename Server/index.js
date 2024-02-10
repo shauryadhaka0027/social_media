@@ -7,8 +7,14 @@ const {userRouter}=require("./Routes/UserRoutes");
 const { postRouter } = require("./Routes/PostRoute");
 const { auth } = require("./Middleware/Auth.middleware");
 const cookieParser = require("cookie-parser");
+const cors =require("cors")
 app.use(cookieParser());
 app.use(express.json());
+app.use(cors({
+    origin: ["http://127.0.0.1:5173"],
+    credentials: true
+  }));
+ 
 app.use("/user",userRouter)
 app.use('/post',auth,postRouter)
 
