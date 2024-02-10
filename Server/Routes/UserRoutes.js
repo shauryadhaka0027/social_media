@@ -34,11 +34,11 @@ userRouter.post("/login", async (req, res) => {
                     res.status(400).send({ "msg": err });
                 } else {
                     if (result) {
-                        const access_token = jwt.sign({ email: data.email }, access_token_key, { expiresIn: "1h" });
-                        const refresh_token = jwt.sign({ email: data.email }, refresh_token_key, { expiresIn: "7h" });
+                        const access_token = jwt.sign({ UserId:data.id,user:data.username }, access_token_key, { expiresIn: "1h" });
+                       
 
                         res.cookie("access_token", access_token,{ httpOnly:true, sameSite: 'none', secure: false});
-                        res.cookie("refresh_token", refresh_token,{ httpOnly: true, sameSite: 'none', secure: false });
+                        
 
 
                         res.status(200).send({ "msg": "Login successful" });
