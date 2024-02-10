@@ -15,9 +15,9 @@ postRouter.post("/create",async(req,res)=>{
 
 postRouter.get("/",async(req,res)=>{
     try {
-        const userId = req.user.userId; 
+        const UserId = req.user.UserId; 
         const { device } = req.query;
-        let query = { user: userId };
+        let query = { user: UserId };
         if (device) {
           query.device = device;
         }

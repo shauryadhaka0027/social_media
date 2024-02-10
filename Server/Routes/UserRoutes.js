@@ -33,7 +33,7 @@ userRouter.post("/login", async (req, res) => {
                     res.status(400).send({ "msg": err });
                 } else {
                     if (result) {
-                        const access_token = jwt.sign({ UserId:data.id,user:data.username }, access_token_key, { expiresIn: "1h" });
+                        const access_token = jwt.sign({ UserId:data._id,user:data.name }, access_token_key, { expiresIn: "5h" });
                        
 
                         res.cookie("access_token", access_token,{ httpOnly:true, sameSite: 'none', secure: false});
@@ -53,6 +53,9 @@ userRouter.post("/login", async (req, res) => {
         res.status(500).send({ "msg": error });
     }
 });
+
+
+
 
 
 module.exports={userRouter} 
