@@ -3,7 +3,7 @@ require("dotenv").config();
 const access_token_Key=process.env.access_token_Key
 
 const auth=(req,res,next)=>{
-    const token =req.cookies["my-access_token"]
+    const token =req.cookies["access_token"]
     if(token){
         jwt.verify(token,access_token_Key,(err,decode)=>{
             if(err){

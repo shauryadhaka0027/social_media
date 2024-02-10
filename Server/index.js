@@ -3,10 +3,14 @@ const app = express();
 const connection = require("./db");
 require("dotenv").config();
 const PORT = process.env.PORT;
-const {userRouter}=require("./Routes/UserRoutes")
-
+const {userRouter}=require("./Routes/UserRoutes");
+const { postRouter } = require("./Routes/PostRoute");
+const { auth } = require("./Middleware/Auth.middleware");
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
 app.use(express.json());
 app.use("/user",userRouter)
+app.use('/post',auth,postRouter)
 
 app.get("/", (req, res) => {
     res.send({"msg": "shaurya"});

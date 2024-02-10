@@ -3,7 +3,6 @@ const { UserModel } = require('../Model/UserModel');
 const userRouter=express.Router()
 const bcrypt=require("bcrypt")
 const access_token_key = process.env.access_token_key;
-const refresh_token_key = process.env.refresh_token_key;
 const jwt = require("jsonwebtoken");
 
 userRouter.post("/register", async (req, res) => {
@@ -56,4 +55,4 @@ userRouter.post("/login", async (req, res) => {
 });
 
 
-module.exports={userRouter}
+module.exports={userRouter} 
