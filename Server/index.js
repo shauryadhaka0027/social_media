@@ -3,8 +3,10 @@ const app = express();
 const connection = require("./db");
 require("dotenv").config();
 const PORT = process.env.PORT;
+const {userRouter}=require("./Routes/UserRoutes")
 
 app.use(express.json());
+app.use("/user",userRouter)
 
 app.get("/", (req, res) => {
     res.send({"msg": "shaurya"});
